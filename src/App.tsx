@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import GameProvider from './context/GameContext'
+import Question from './views/Question'
+import Results from './views/Results'
+import Welcome from './views/Welcome'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<GameProvider>
+			<Router>
+				<Routes>
+					<Route path='/' element={<Welcome />} />
+					<Route path='/questions/:questionId' element={<Question />} />
+					<Route path='/result' element={<Results />} />
+				</Routes>
+			</Router>
+		</GameProvider>
+	)
 }
 
-export default App;
+export default App
