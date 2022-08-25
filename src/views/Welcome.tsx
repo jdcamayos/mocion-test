@@ -1,24 +1,36 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+// MUI Styles
+import Box from '@mui/material/Box'
+// Others
 import useGame from '../hooks/useGame'
+import GreetingSection from '../components/welcome/GreetingSection'
+import DescriptionSection from '../components/welcome/DescriptionSection'
+import StartGameSection from '../components/welcome/StartGameSection'
 
 export default function Welcome() {
-	const { loading, game, fetchQuestions } = useGame()
+	const { game, restartGame } = useGame()
+
+	React.useEffect(() => {
+		if (game.history.length > 0) {
+			restartGame()
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
+
 	return (
-		<div>
-			<h1>
-				Welcome to the <br /> Trivia Challenge!
-			</h1>
-			<h3>You will be presented with 10 True or False questions.</h3>
-			<h3>Can you score 100%?</h3>
-			{loading && 'Loading'}
-			{game.questions.length > 0 && <Link to='/questions/0'>Begin</Link>}
-			{game.questions.length === 0 && loading === false && (
-				<>
-					<p>Ups!, something goes wrong loading questions</p>
-					<button onClick={() => fetchQuestions()}>Re load</button>
-				</>
-			)}
-		</div>
+		<Box
+			component='main'
+			sx={{
+				minHeight: '100vh',
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+				padding: '48px 16px 8px 16px',
+			}}
+		>
+			<GreetingSection />
+			<DescriptionSection />
+			<StartGameSection />
+		</Box>
 	)
 }

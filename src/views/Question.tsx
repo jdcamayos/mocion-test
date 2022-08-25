@@ -1,8 +1,15 @@
 import * as React from 'react'
 import { useParams } from 'react-router-dom'
+// MUI Styles
+import Box from '@mui/material/Box'
+// Components
+import CategorySection from '../components/question/CategorySection'
+import QuestionSection from '../components/question/QuestionSection'
+import AnswerSection from '../components/question/AnswerSection'
+// Hooks
 import useGame from '../hooks/useGame'
+// Types
 import { QuestionForGame } from '../types/questions'
-import { parseText } from '../utils/parseText'
 
 export default function Question() {
 	const { questionId } = useParams()
@@ -20,19 +27,31 @@ export default function Question() {
 	if (!question) return null
 
 	return (
-		<div>
-			<h4>Question {+questionId + 1}</h4>
-			<div>
-				<h4>{question.category}</h4>
-				<p>{parseText(question.question)}</p>
-				{question.answers
-					.sort((a, b) => b.answer.charCodeAt(0) - a.answer.charCodeAt(0))
-					.map(a => (
-						<button key={a.id} onClick={() => sendAnswer(question.id, a.answer)}>
-							{a.answer}
-						</button>
-					))}
-			</div>
-		</div>
+		<Box
+			component='main'
+			sx={{
+				minHeight: '100vh',
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+				padding: '16px 0',
+				gap: 2,
+			}}
+		>
+			<Box>
+				<CategorySection>
+					{question.category}
+				</CategorySection>
+				<QuestionSection
+					questionId={+questionId}
+					question={question.question}
+					questionQty={game.questionQty}
+				/>
+				<AnswerSection
+					question={question}
+					sendAnswer={sendAnswer}
+				/>
+			</Box>
+		</Box>
 	)
 }
