@@ -3,7 +3,7 @@ import * as React from 'react'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
-// Others
+// Utils
 import { parseText } from '../../utils/parseText'
 
 type Props = {

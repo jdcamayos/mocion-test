@@ -2,9 +2,10 @@ import * as React from 'react'
 // MUI Styles
 import List from '@mui/material/List'
 import Paper from '@mui/material/Paper'
+// Components
+import HistoryItem from './HistoryItem'
 // Types
 import { Game } from '../../types/game'
-import HistoryItem from './HistoryItem'
 
 type Props = {
 	game: Game

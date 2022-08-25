@@ -43,6 +43,7 @@ export default function useGame() {
 	const sendAnswer = (id: number, res: string) => {
 		const isCorrect = game.questions[id].correct_answer === res
 		const question = game.questions[id].question
+		console.log(res)
 
 		if (isCorrect) {
 			answerOk(id, question, isCorrect)

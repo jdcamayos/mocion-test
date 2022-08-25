@@ -14,6 +14,7 @@ type Props = {
 
 export default function AnswerSection(props: Props) {
 	const { question, sendAnswer } = props
+	console.log(question)
 	return (
 		<Grid container>
 			{question.answers

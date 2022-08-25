@@ -3,9 +3,11 @@ import * as React from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
-import useGame from '../../hooks/useGame'
+import Typography from '@mui/material/Typography'
+// Components
 import PlayButton from '../misc/PlayButton'
-import Text from '../misc/Text'
+// Hooks
+import useGame from '../../hooks/useGame'
 
 export default function StartGameSection() {
 	const { loading, game, fetchQuestions } = useGame()
@@ -17,15 +19,18 @@ export default function StartGameSection() {
 			<Button sx={{ textTransform: 'none', fontSize: 18 }} color='warning' variant='contained' fullWidth onClick={() => fetchQuestions()}>
 				Re load
 			</Button>
-			<Text
+			<Typography
+				component='p'
 				sx={{
 					marginTop: 2,
 					fontSize: 18,
 					textAlign: 'center',
+					color: 'background.default',
+					fontWeight: '400'
 				}}
 			>
 				Ups!, something goes wrong loading questions
-			</Text>
+			</Typography>
 		</>
 	)
 

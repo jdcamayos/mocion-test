@@ -1,82 +1,10 @@
 import * as React from 'react'
 // MUI Styles
 import Box from '@mui/material/Box'
-import Avatar from '@mui/material/Avatar'
 import Typography from '@mui/material/Typography'
-// Others
-import { colors } from '../../utils/palette'
-
-const getColor = (i: number) => {
-	const values = Object.values(colors).slice(0, -2)
-	return values[i % values.length]
-}
-
-type MultiColorTitleProps = {
-	str: string
-}
-
-const MultiColorTitle = (props: MultiColorTitleProps) => {
-	const { str } = props
-	return (
-		<Box
-      component="article"
-			sx={{
-				display: 'flex',
-				justifyContent: "center",
-			}}
-		>
-			{str.split('').map((l, i) => (
-				<Typography
-					component='span'
-					sx={{
-						fontSize: 100,
-						margin: 0,
-						padding: 0,
-						fontWeight: '700',
-						color: getColor(i),
-					}}
-				>
-					{l}
-				</Typography>
-			))}
-		</Box>
-	)
-}
-
-type MultiColorAvatarProps = {
-	str: string
-}
-
-const MultiColorAvatar = (props: MultiColorAvatarProps) => {
-	const { str } = props
-	return (
-		<Box
-      component="article"
-			sx={{
-				display: 'flex',
-				justifyContent: "center",
-			}}
-		>
-			{str.split('').map((l, i) => (
-				<Avatar
-					sx={{
-						backgroundColor: getColor(i),
-					}}
-					key={i}
-				>
-					<Typography
-						sx={{
-							fontWeight: '700',
-							fontSize: 25,
-						}}
-					>
-						{l}
-					</Typography>
-				</Avatar>
-			))}
-		</Box>
-	)
-}
+// Components
+import MultiColorTitle from './MultiColorTitle'
+import MultiColorAvatar from './MultiColorAvatar'
 
 export default function GreetingSection() {
 	return (
